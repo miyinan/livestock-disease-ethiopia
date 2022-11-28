@@ -1,0 +1,385 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
+body{
+    color: black;
+}
+
+.webgl
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    outline: none;
+    background: linear-gradient(0deg, hsl(200, 50%,100%) 50%, hsl(160,50%,50%) 100%);
+
+
+    cursor: move; /* fallback if grab cursor is unsupported */
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.webgl:active{
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+
+.title{
+    font-size: 96px;
+    font-weight: 600;
+    line-height: 100%;
+    text-transform: uppercase;
+}
+
+h1{
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+h2{
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+h3{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+p2 {
+    font-size: 22px;
+    line-height: 150%;
+    font-weight: 400;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+a{
+   color: #33b36b;
+   text-decoration: none;
+}
+
+a:hover {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.helptext{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+}
+
+.sign {
+    position: fixed;
+    padding: 0 20px 0 20px;
+    width: 100%;
+    max-width: 560px;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 16px;
+    box-sizing: border-box;
+    z-index: 777;
+    text-align: center;
+}
+
+#animation {
+    width: 88px;
+    height: 48px;
+    margin: auto;
+    margin-bottom: 12px;
+    background-image: url(../img/drag_animation.svg);
+}
+
+.project {
+    position: fixed;
+    width: 90%;
+    max-width: 400px;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 16px;
+    padding: 0px;
+    z-index: 777;
+    box-sizing: border-box;
+  }
+
+.content {
+    text-align: left;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.text {
+    width: 100%;
+    display: block;
+}
+
+.thumbnail{
+    display: flex;
+    width: 80px;
+    min-width: 80px;
+    height: 80px;
+    margin-right: 16px;
+    border-radius: 12px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.button{
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    border: none;
+    background-color: white;
+    color: black;
+    border-radius: 99px;
+}
+
+.button:hover {
+    cursor: pointer;
+    color: white; 
+    background-color: #33b36b;
+}
+.button:active { 
+    cursor: pointer;
+    color: white; 
+    background-color: black;
+}
+
+#switch {
+    position: fixed;
+    z-index: 888;
+    bottom: 20px;
+    right: 20px;
+}
+  
+#switch input { 
+    display: none;
+}
+
+.icon {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#moon{
+    display: none;
+}
+
+#sun{
+    display: block;
+}
+
+input:checked ~ #moon {
+    display: block;
+}
+
+input:checked ~ #sun {
+    display: none;
+}
+  
+
+.modal {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    overflow-y: scroll;
+    background-color: black;
+    color: white;
+    position: fixed; 
+    z-index: 999; 
+    display: none;
+}
+
+.header {
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.header-wrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 800px;
+    margin: auto;
+    filter: drop-shadow(0 0 50px black);
+}
+
+.modal-content-wrapper {
+    max-width: 800px;
+    margin: 0 auto 80px auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 80px;
+    justify-content: space-between;
+}
+
+.project-img{
+    width:100%;
+    height:auto;
+}
+
+.credits {
+    text-align: center;
+}
+
+#logo{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 100%;
+    z-index: 999;
+}
+
+.button-round{
+    background-color: white;
+    color: black;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+}
+
+.button-round:hover {
+    cursor: pointer;
+    color: white; 
+    background-color: #542BEC;
+}
+
+
+.close {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 999;
+}
+
+.embed-container {
+    --video--width: 960;
+    --video--height: 540;
+  
+    position: relative;
+    padding-bottom: calc(var(--video--height) / var(--video--width) * 100%); /* 41.66666667% */
+    overflow: hidden;
+    max-width: 100%;
+    background: black;
+  }
+  
+  .embed-container iframe,
+  .embed-container object,
+  .embed-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+/* Fade-In Effect */
+.visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear;
+}
+/* Fade-Out Effect */
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 0.2s, opacity 0.2s linear;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .modal-content-wrapper {
+        margin: 48px 48px 48px 48px;
+        row-gap: 64px;
+    }
+
+    .header-wrapper {
+        margin: auto 48px auto 48px;
+    }
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    .helptext span {
+        display: none;
+      }
+    .helptext:after {
+        content:'Swipe to explore';
+    }
+
+    #animation{
+        background-image: url(../img/swipe_animation.svg);
+    }
+
+    .modal-content-wrapper {
+        margin: 32px 20px 48px 20px;
+        row-gap: 40px;
+    }
+
+    .header {
+        height: 360px;
+    }
+
+    .header-wrapper {
+        margin: auto 20px auto 20px;
+    }
+
+    .title{
+        font-size: 64px;
+    }
+
+  }
