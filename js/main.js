@@ -1,3 +1,4 @@
+/*
 import * as THREE from '/js/three.js';
 import { GLTFLoader } from '/js/GLTFLoader.js';
 import { OrbitControls } from '/js/OrbitControls.js';
@@ -5,6 +6,18 @@ import { DRACOLoader } from '/js/DRACOLoader.js';
 import Stats from '/js/stats.module.js';
 import { MeshSurfaceSampler } from '/js/MeshSurfaceSampler.js';
 import { TWEEN } from '/js/tween.module.min.js';
+*/
+
+
+import * as THREE from 'https://miyinan.github.io/livestock-disease-ethiopia/js/three.js';
+import { GLTFLoader } from 'https://miyinan.github.io/livestock-disease-ethiopia/js/GLTFLoader.js';
+import { OrbitControls } from 'https://miyinan.github.io/livestock-disease-ethiopia/js/OrbitControls.js';
+import { DRACOLoader } from 'https://miyinan.github.io/livestock-disease-ethiopia/js/DRACOLoader.js';
+import Stats from '/js/stats.module.js';
+import { MeshSurfaceSampler } from '/js/MeshSurfaceSampler.js';
+import { TWEEN } from 'https://miyinan.github.io/livestock-disease-ethiopia/js/tween.module.min.js';
+
+
 
 /**
  * Debug
