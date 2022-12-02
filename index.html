@@ -20,13 +20,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" type="image/png" href="img/favicon.png" sizes="16x16">
+    <script src="https://kit.fontawesome.com/11752c7e09.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
   <div id="loadingscreen">  
     <div id="loader-wrapper">
         <div class="title">Livestock disease in Ethiopia</div>
-        <h3 style="text-align: left;"><span>I'm Joshua, an Interaction Designer who is enthusiastic about creating engaging and delightful digital experiences.</span></h3>
+        <h3 style="text-align: left;"><span>Explore livestock disease data in Ethiopia in an engaging way.</span></h3>
         <div id="progress">
             <span id="loading">Loading...</span>
             <div id="progress-bar"></div>
@@ -35,7 +36,7 @@
     </div>
 </div>
 
-<div id="logo">Livestock disease in<br>Ethiopia</div>
+<div id="logo">LIVESTOCK DISEASE in<br>ETHIOPIA</div>
 
 <nav role="navigation">
     <div id="menuToggle">
@@ -52,7 +53,226 @@
     </div>
 </nav>
 
-    <canvas class="webgl"></canvas>
+
+
+<!-- show legend or not-->
+
+<div>
+  <button class="button-round" onclick="showLegend()" id="switch">
+    <i class="icon fa-regular fa-circle-question fa-4x"></i>
+  </button>
+<div>
+
+<div id="overlay">
+  <div class="legend">
+    <embed src="img/legend.svg" type="image/svg+xml" />
+    <button onclick="hideLegend()">
+      <i class="legendclose fa-solid fa-xmark fa-2x"></i>
+    </button>
+  </div>
+</div>
+
+
+<canvas class="webgl"></canvas>
+
+
+<!-- scroll-->
+
+    <div class="sign" id="instructions">
+      <div id="animation"></div>
+      <div class="helptext"><span class="helptext">DRAG TO EXPLORE
+         <br><br>
+         <p>Click ‘?’ in the left lower conor for more instructions.</p><br></span></div>
+  </div>
+
+
+
+<!-- Addis Ababa-->
+  <div class="popup sign hidden" id="Addis Ababa">
+    <div class="projecttitle">
+    <h2>Addis Ababa</h2>
+    <br></div>
+    <div class="hide">
+      <embed src="img/graph/Addis-Ababa.svg" type="image/svg+xml" class="popupgraph" />
+    </div>
+    <p2>Addis Ababa is the capital and largest city of Ethiopia. Echinococcosis is the most studied disease among four species, followed by Cysticercosis and Fasciolosis. Many diseases of cattle in this state differ from other species, such as Neosporosis, and Brucellosis.
+    </p2>
+  </div> 
+
+  <div class="popupstate state hidden" id="Addis-Ababa">
+    <embed src="img/map/Addis-Ababa.svg" type="image/svg+xml" />
+  </div> 
+
+<!-- Afar-->
+<div class="popup sign hidden" id="Afar">
+  <div class="projecttitle">
+  <h2>Afar</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Afar.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Afar has the lowest point in Ethiopia and one of the lowest in Africa. The majority of small ruminant tuberculosis were carried out in Afar pastoralist community, and it suggests extensive circulation of PPR (Peste des petits ruminants) virus among the small ruminant population.</p2>
+</div> 
+
+<div class="popupstate state hidden" id="Afar">
+  <embed src="img/map/Afar.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- Amhara-->
+<div class="popup sign hidden" id="Amhara">
+  <div class="projecttitle">
+  <h2>Amhara</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Amhara.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Amhara is the site of the largest inland body of water in Ethiopia. Nematodirases, mostly in the context of sheep gastrointestinal parasites, seems to have been well-studied in Amhara and is the the common studied disease among different species. </p2>
+</div> 
+
+<div class="popupstate state hidden" id="Amhara">
+  <embed src="img/map/Amhara.svg" type="image/svg+xml" />
+</div> 
+
+
+ <!-- Benishangul-Gumuz-->
+<div class="popup sign hidden" id="Benishangul-Gumuz">
+  <div class="projecttitle">
+  <h2>Benishangul-Gumuz</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Benishangul-Gumuz.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Benishangul-Gumuz is a regional state in northwestern Ethiopia. Most of studies about trypanosomosis were conducted in this parts of the country, but the average prevalence exhibits significant differences among species.</p2>
+</div> 
+
+<div class="popupstate state hidden" id="Benishangul-Gumuz">
+  <embed src="img/map/Benishangul-Gumuz.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- Dire-Dawa-->
+<div class="popup sign hidden" id="Dire-Dawa">
+  <div class="projecttitle">
+  <h2>Dire Dawa</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Dire-Dawa.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Dire Dawa lies in the eastern part of the nation, on the Dechatu River. Studies on Brucellosis have been implicated in all species in the state. Disease prevalent in other species, such as Infestation with ticks/mange/mites/flees, Cysticercosis and Nematodiasis, Fasciolosis, does not appear in studies on cattle. 
+  </p2>
+</div> 
+
+<div class="popupstate state hidden" id="Dire-Dawa">
+  <embed src="img/map/Dire-Dawa.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- Gambella-->
+<div class="popup sign hidden" id="Gambella">
+  <div class="projecttitle">
+  <h2>Gambella</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Gambella.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Gambella, a less populous Ethiopian state that rely heavily on extensive livestock production, is under-represented in recent literature. The common studied disease suggest extensive circulation of PPR (Peste des petits ruminants) virus among the small ruminant population.</p2>
+</div> 
+
+<div class="popupstate state hidden" id="Gambella">
+  <embed src="img/map/Gambella.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- Harari-->
+<div class="popup sign hidden" id="Harari">
+  <div class="projecttitle">
+  <h2>Harari</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Harari.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Harari is the smallest regional state in Ethiopia in both land area and population. Infestation with ticks/mange/mites/flees is the common studied disease among four species. Studies in this region on Brucellosis, Echinococcosis, Neosporosis are only about cattle. </p2>
+</div> 
+
+<div class="popupstate state hidden" id="Harari">
+  <embed src="img/map/Harari.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- Oromia-->
+<div class="popup sign hidden" id="Oromia">
+  <div class="projecttitle">
+  <h2>Oromia</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Oromia.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Nematodirases and Trypanosomosis seems to have been well-studied in Oromia. Most of the published studies about Fasciolosis and echinococcosis that are both widely prevalent in Ethiopia and incur significant economic losses were conducted in Oromia and Amhara. </p2>
+</div> 
+
+<div class="popupstate state hidden" id="Oromia">
+  <embed src="img/map/Oromia.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- SNNPR-->
+<div class="popup sign hidden" id="SNNPR">
+  <div class="projecttitle">
+  <h2>SNNPR</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/SNNPR.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Most of the studies covering tick infestations in cattle, were conducted in the SNNPR. Research in the area has focused more on cattle, including trypanosomosis and other diseases that only occur in cattle.
+  </p2>
+</div> 
+
+<div class="popupstate state hidden" id="SNNPR">
+  <embed src="img/map/SNNPR.svg" type="image/svg+xml" />
+</div> 
+
+
+<!-- Somali-->
+<div class="popup sign hidden" id="Somali">
+  <div class="projecttitle">
+  <h2>Somali</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Somali.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Somali has the largest territory after Oromia but but the population is small. Studies on Brucellosis and Infestation have been implicated in all species in the state. Much of the research on cattle is about diseases that only occur in cattle, such as Foot and mouth disease. </p2>
+</div> 
+
+<div class="popupstate state hidden" id="Somali">
+  <embed src="img/map/Somali.svg" type="image/svg+xml" />
+</div> 
+
+<!-- Tigray-->
+<div class="popup sign hidden" id="Tigray">
+  <div class="projecttitle">
+  <h2>Tigray</h2>
+  <br></div>
+  <div class="hide">
+    <embed src="img/graph/Tigray.svg" type="image/svg+xml" class="popupgraph" />
+  </div>
+  <p2>Tigray is the fifth-largest by area, the fifth-most populous, and the fifth-most densely populated of the regional states. The prevalence of certain diseases is higher, such as Pasteurellosis in Small Ruminants and Theileriosis in Sheep. </p2>
+</div> 
+
+<div class="popupstate state hidden" id="Tigray">
+  <embed src="img/map/Tigray.svg" type="image/svg+xml" />
+</div> 
+
+
+
+  <div class="popup project hidden">
+    <a href="Archieve.html" target="_blank" onclick="fowardTtoArchieve()">
+        <div class="button primary">
+          More explorations in Archive <i class="fa-solid fa-arrow-right"></i>
+        </div>
+    </a>
+    
+</div>
 
 
 <script src="js/buttons.js"></script>

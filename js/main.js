@@ -13,6 +13,7 @@ import { TWEEN } from '/js/tween.module.min.js';
 // stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
 // document.body.appendChild(stats.dom)
 
+const y_offset=-1;
 const canvas = document.querySelector('canvas.webgl')
 
 // Sizes
@@ -59,8 +60,9 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 var island;
 gltfLoader.load(
-    //'/models/island.glb', 
-    '/models/test.glb', 
+    '/models/island.glb', 
+    //'/models/ll.glb', 
+    //'/models/test3.glb', 
     function(gltf){
         island = gltf.scene;
         gltf.scene.traverse( function( node ) {
@@ -70,15 +72,20 @@ gltfLoader.load(
             }
         } );
         scene.add(island)
-        island.scale.set(4,4,4);
+        island.translateY(y_offset)
+        island.translateY(-2.3)
+        let scalei=0.95;
+        island.scale.set(scalei,scalei,scalei);
+        
 });
 
+/*
 gltfLoader.load(
     '/models/treeline.glb', 
     function(gltf){
         var surface = gltf.scene.children[0];
         var sampler = new MeshSurfaceSampler(surface).build();
-        /* Sample the coordinates */
+       
         const tempPosition = new THREE.Vector3();
         const tempObject = new THREE.Object3D();
 
@@ -118,19 +125,23 @@ gltfLoader.load(
                 instancedStem.castShadow = true;
                 instancedBlossom.receiveShadow = true;
                 scene.add( instancedBlossom );
+                instancedBlossom.translateY(y_offset)
                 scene.add( instancedStem );
+                instancedStem.translateY(y_offset)
 
     }
 });
 });
 
+*/
 
+/*
 gltfLoader.load(
     '/models/treeline.glb', 
     function(gltf){
         var surface = gltf.scene.children[0];
         var sampler = new MeshSurfaceSampler(surface).build();
-        /* Sample the coordinates */
+        
         const tempPosition = new THREE.Vector3();
         const tempObject = new THREE.Object3D();
 
@@ -161,10 +172,12 @@ gltfLoader.load(
                 instancedTree.castShadow = true;
                 instancedTree.receiveShadow = true;
                 scene.add( instancedTree );
+                instancedTree.translateY(y_offset)
 
     }
 });
 });
+*/
 
 var car;
 gltfLoader.load(
@@ -178,6 +191,7 @@ gltfLoader.load(
         } );
         scene.add(car);
         car.scale.set(.32,.32,.32);
+        car.translateY(y_offset)
 });
 
 var mug;
@@ -190,9 +204,10 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(mug);
+        //scene.add(mug);
         mug.scale.set(1,1,1);
         mug.position.set(-6.5,0,-8);
+        mug.translateY(y_offset)
 });
 
 var mixer3;
@@ -214,10 +229,11 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(joshua);
+        //scene.add(joshua);
         joshua.scale.set(1,1,1);
         joshua.position.set(-3.5,0,10);
         joshua.rotation.y = 0;
+        joshua.translateY(y_offset)
 });
 
 const shirtColor = new THREE.Color();
@@ -250,7 +266,8 @@ for ( let i = 0; i < 8; i ++ ) {
                 node.material.color.set( shirtColor ).convertSRGBToLinear();
             }
         } );
-        scene.add(man);
+        //scene.add(man);
+        man.translateY(y_offset)
     });
     }
     
@@ -276,7 +293,8 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(clapper);
+        //scene.add(clapper);
+        clapper.translateY(y_offset)
 });
 
 var cyclist;
@@ -300,6 +318,7 @@ gltfLoader.load(
             }
         } );
         scene.add(cyclist);
+        cyclist.translateY(y_offset)
 });
 
 var mixer4;
@@ -323,7 +342,8 @@ gltfLoader.load(
                 node.receiveShadow = true;
             }
         } );
-        scene.add(stag);
+        //scene.add(stag);
+        stag.translateY(y_offset)
 });
 
 
@@ -348,12 +368,14 @@ gltfLoader.load(
         robot.position.set(0,0,-9.5);
         robot.rotation.y = -Math.PI;
 
-        scene.add(robot);
+        //scene.add(robot);
+        robot.translateY(y_offset)
 });
 
 // Camera
-const camera = new THREE.PerspectiveCamera(64, sizes.width / sizes.height, 1, 90);
+const camera = new THREE.PerspectiveCamera(80, sizes.width / sizes.height, 1, 90);
 camera.position.set(0,30,30);
+//camera.position.set(0,30,30);
 scene.add(camera);
 
 // Controls
@@ -363,7 +385,7 @@ controls.enablePan = false;
 controls.minPolarAngle = Math.PI/2.4;
 controls.maxPolarAngle = Math.PI/2.15;
 controls.minDistance = 16;
-controls.maxDistance = 30;
+controls.maxDistance = 26;
 controls.enableDamping = true;
 controls.rotateSpeed = 0.25;
 
@@ -442,8 +464,8 @@ sunLight.shadow.normalBias = 0.02;
 scene.add(sunLight);
 scene.add( sunLight.target );
 
-// const helper = new THREE.CameraHelper( sunLight.shadow.camera );
-// scene.add( helper );
+ //const helper = new THREE.CameraHelper( sunLight.shadow.camera );
+ //scene.add( helper );
 
 const spotLight = new THREE.SpotLight(0xffffff, 4, 6, Math.PI/4, 1, 1);
 spotLight.position.set( 0, 3.5, 0 );
@@ -532,6 +554,7 @@ let i = 0;
 let g = 0.8;
 
 const popups = document.getElementsByClassName("popup");
+const popupstate = document.getElementsByClassName("popupstate");
 const clock = new THREE.Clock(); 
 
 
@@ -566,7 +589,7 @@ const tick = () =>
     }
 
     if (azimuthalAngle >= 0.1 || azimuthalAngle < -0.1) {
-       // document.getElementById("instructions").classList.add("hidden");
+        document.getElementById("instructions").classList.add("hidden");
       }
 
 
@@ -580,6 +603,20 @@ const tick = () =>
             popups[i].classList.remove("visible");
         }
     }
+
+    //test for state
+
+    for (let i = 0; i < popupstate.length; i++ ){
+        if (cyclePos >= i/popupstate.length && cyclePos < (i+1)/popupstate.length) {
+            popupstate[i].classList.remove("hidden");
+            popupstate[i].classList.add("visible");
+        }
+        else {
+            popupstate[i].classList.add("hidden");
+            popupstate[i].classList.remove("visible");
+        }
+    }
+
 
     // Animation Mixer
     const delta = clock.getDelta();

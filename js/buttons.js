@@ -4,6 +4,7 @@ var X = document.getElementsByClassName("button-round close");
 var menu = document.getElementById("menu");
 
 
+
 // When the user clicks the button, open the modal
 for (var i = 0; i < btn.length; i++) {
 btn[i].onclick = function(e) {
@@ -28,4 +29,17 @@ function copy() {
   
   // Alert the copied text
   //alert("E-mail copied!");
+}
+
+function showLegend() {
+  document.getElementById("overlay").style.display="block";
+  
+}
+
+function hideLegend() {
+  document.getElementById("overlay").style.display="none";
+}
+
+function fowardTtoArchieve(){
+   window.location="Archieve.html";
 }
