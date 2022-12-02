@@ -8,6 +8,7 @@ import { MeshSurfaceSampler } from '/js/MeshSurfaceSampler.js';
 import { TWEEN } from '/js/tween.module.min.js';
 */
 
+const loc='https://miyinan.github.io/livestock-disease-ethiopia';
 
 import * as THREE from 'https://miyinan.github.io/livestock-disease-ethiopia/js/three.js';
 import { GLTFLoader } from 'https://miyinan.github.io/livestock-disease-ethiopia/js/GLTFLoader.js';
@@ -73,7 +74,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 var island;
 gltfLoader.load(
-    '/models/island.glb', 
+    loc+'/models/island.glb', 
     //'/models/ll.glb', 
     //'/models/test3.glb', 
     function(gltf){
@@ -194,7 +195,7 @@ gltfLoader.load(
 
 var car;
 gltfLoader.load(
-    '/models/scooter.glb', function(gltf){
+    loc+'/models/scooter.glb', function(gltf){
         car = gltf.scene;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -209,7 +210,7 @@ gltfLoader.load(
 
 var mug;
 gltfLoader.load(
-    '/models/mug.glb', function(gltf){
+    loc+'/models/mug.glb', function(gltf){
         mug = gltf.scene;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
@@ -226,7 +227,7 @@ gltfLoader.load(
 var mixer3;
 var action3;
 gltfLoader.load(
-    '/models/joshua.glb', function(gltf){
+    loc+'/models/joshua.glb', function(gltf){
         var joshua = gltf.scene;
 
         //Playing Animation
@@ -255,7 +256,7 @@ const skinPalette = [ 0x8d5524, 0xc68642, 0xe0ac69, 0xf1c27d, 0xffdbac ];
 
 for ( let i = 0; i < 8; i ++ ) {
     gltfLoader.load(
-    '/models/man.glb', function(gltf){
+        loc+'/models/man.glb', function(gltf){
         var man = gltf.scene;
         man.scale.set(.49,.49,.49);
         man.position.set(-8.5+ Math.random()*2-1, -0.01, 4.5 + Math.random()*2-1);
@@ -289,7 +290,7 @@ var clapper;
 var mixer;
 var action;
 gltfLoader.load(
-    '/models/clapper.glb', function(gltf){
+    loc+'/models/clapper.glb', function(gltf){
         clapper = gltf.scene;
         clapper.scale.set(1.4, 1.4, 1.4);
         clapper.position.set(9.5, 0, -1);
@@ -314,7 +315,7 @@ var cyclist;
 var mixer2;
 var action2;
 gltfLoader.load(
-    '/models/cyclist.glb', function(gltf){
+    loc+'/models/cyclist.glb', function(gltf){
         cyclist = gltf.scene;
         cyclist.scale.set(.33,.33,.33);
 
@@ -337,7 +338,7 @@ gltfLoader.load(
 var mixer4;
 var action4;
 gltfLoader.load(
-    '/models/stag.glb', function(gltf){
+    loc+'/models/stag.glb', function(gltf){
         var stag = gltf.scene;
 
         stag.scale.set(.2,.2,.2);
@@ -364,7 +365,7 @@ var robot;
 var mixer5;
 var action5;
 gltfLoader.load(
-    '/models/robo.glb', function(gltf){
+    loc+'/models/robo.glb', function(gltf){
         robot = gltf.scene;
         gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
