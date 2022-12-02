@@ -1,7 +1,7 @@
 import {
 	Triangle,
 	Vector3
-} from '/js/three.js';
+} from 'https://miyinan.github.io/livestock-disease-ethiopia/js/three.js';
 
 /**
  * Utility class for sampling weighted random points on the surface of a mesh.

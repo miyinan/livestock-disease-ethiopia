@@ -62,7 +62,7 @@ import {
 	Vector3,
 	VectorKeyframeTrack,
 	sRGBEncoding
-} from '/js/three.js';
+} from 'https://miyinan.github.io/livestock-disease-ethiopia/js/three.js';
 
 class GLTFLoader extends Loader {
 

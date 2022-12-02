@@ -3,7 +3,7 @@ import {
 	BufferGeometry,
 	FileLoader,
 	Loader
-} from '/js/three.js';
+} from 'https://miyinan.github.io/livestock-disease-ethiopia/js/three.js';
 
 const _taskCache = new WeakMap();
 
