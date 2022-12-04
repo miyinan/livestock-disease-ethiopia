@@ -234,7 +234,7 @@ var mixer2;
 var action2;
 gltfLoader.load(
     loc+'/models/black-x.glb', 
-    '/models/cyclist.glb', 
+    //'/models/cyclist.glb', 
     function(gltf){
         cyclist = gltf.scene;
         cyclist.scale.set(.33,.33,.33);
