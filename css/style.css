@@ -70,7 +70,7 @@ p2 {
 
 p {
     font-size: 20px;
-    font-weight: 400;
+    font-weight: 200;
     line-height: 140%;
 }
 
@@ -131,6 +131,7 @@ a:hover {
     padding: 0px;
     z-index: 777;
     box-sizing: border-box;
+    text-align: center;
   }
 
 .content {
@@ -184,7 +185,15 @@ a:hover {
 
 .primary{
     text-align: center;
+    width: 100%
 }
+
+.nextbutton{
+    text-align: center;
+    width: 30%;
+    float:right;
+}
+
 
 #switch {
     position: fixed;
@@ -309,6 +318,9 @@ input:checked ~ #sun {
     z-index: 999;
 }
 
+.next{
+    padding: 16px;
+}
 
 
 .embed-container {
@@ -357,21 +369,21 @@ input:checked ~ #sun {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.05); /* Black background with opacity */
-    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    z-index: 9999; /* Specify a stack order in case you're using a different order for other elements */
 }
 
 .legend{
     position: absolute;
-    width: 643px;
-    height: 501.26px;
-    left: 574px;
-    top: 241px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
     
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(3.69116px);
     /* Note: backdrop-filter has minimal browser support */
     
     border-radius: 42.0792px;
+    z-index:9999;
 }
 
 .popgraph {
@@ -389,10 +401,8 @@ input:checked ~ #sun {
   
 
  .popupgraph {
-    transform: translateX(50%);
-    position: fixed;
-    left: -42%;
-    top: 55%;
+    display: flex;
+    justify-content: center;
  }
 
 @media only screen and (max-width: 1200px) {
@@ -452,6 +462,14 @@ input:checked ~ #sun {
 
     .title{
         font-size: 64px;
+    }
+
+    .state {
+        position: fixed;
+        z-index: 888;
+        bottom: 10px;
+        right: 20px;
+        width: 50%
     }
 
   }

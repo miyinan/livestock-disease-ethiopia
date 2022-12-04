@@ -29,6 +29,18 @@ import { TWEEN } from 'https://miyinan.github.io/livestock-disease-ethiopia/js/t
 
 const y_offset=-1;
 const canvas = document.querySelector('canvas.webgl')
+const StateCowInfo={
+    "Tigray": {a:5,b:0},
+    "Afar": {a:2,b:0},
+   "Amhara": {a:16,b:0},
+    "Oromia": {a:25,b:0},
+    "Somali": {a:4,b:0},
+   "Benishangul-Gumuz": {a:0,b:4},
+    "SNNPR": {a:12,b:0},
+    "Gambella": {a:0,b:3},
+    "Harari": {a:0,b:1},
+   "Dire-Dawa": {a:0,b:1}
+}
 
 // Sizes
 const sizes = {
@@ -73,13 +85,11 @@ gltfLoader.setDRACOLoader(dracoLoader);
 // Models
 
 var island;
-gltfLoader.load(
-    loc+'/models/island.glb', 
-    //'/models/ll.glb', 
-    //'/models/test3.glb', 
+gltfLoader.load( 
+   loc+'/models/juse2.glb', 
     function(gltf){
         island = gltf.scene;
-        gltf.scene.traverse( function( node ) {
+       gltf.scene.traverse( function( node ) {
             if ( node.isMesh ) { 
                 node.castShadow = true;
                 node.receiveShadow = true;
@@ -87,113 +97,10 @@ gltfLoader.load(
         } );
         scene.add(island)
         island.translateY(y_offset)
-        island.translateY(-2.3)
-        let scalei=0.95;
-        island.scale.set(scalei,scalei,scalei);
         
 });
 
-/*
-gltfLoader.load(
-    '/models/treeline.glb', 
-    function(gltf){
-        var surface = gltf.scene.children[0];
-        var sampler = new MeshSurfaceSampler(surface).build();
-       
-        const tempPosition = new THREE.Vector3();
-        const tempObject = new THREE.Object3D();
-
-gltfLoader.load(
-    '/models/flower.glb', 
-   // '/models/mug.glb',
-    function(gltf){
-
-    var blossom = gltf.scene.getObjectByName( 'Blossom');
-    var stem = gltf.scene.getObjectByName( 'Stem');
-
-    let blossomMaterial = new THREE.MeshLambertMaterial({
-        emissive: new THREE.Color(0xBDD1FF).convertSRGBToLinear(),
-        emissiveIntensity: 0.5,
-    });
-    const color = new THREE.Color();
-    const blossomPalette = [ 0xBDD1FF, 0xD5E1FF, 0xEEF2FF  ];
-
-        for ( let i = 0; i < 500; i ++ ) {
-
-                sampler.sample(tempPosition);
-                tempObject.position.set(tempPosition.x, tempPosition.y-0.03, tempPosition.z);
-                tempObject.scale.setScalar(Math.random() * 0.03 + 0.02);
-                tempObject.updateMatrix();
-
-                color.setHex( blossomPalette[ Math.floor( Math.random() * blossomPalette.length ) ] );
-                
-                var instancedBlossom = new THREE.InstancedMesh( blossom.geometry, blossomMaterial, 1 );
-                var instancedStem = new THREE.InstancedMesh( stem.geometry, stem.material, 1 );
-
-                instancedBlossom.setMatrixAt(0, tempObject.matrix);
-                instancedBlossom.position.y = instancedBlossom.position.y - 0.03;
-                instancedStem.setMatrixAt(0, tempObject.matrix);
-                instancedBlossom.setColorAt(0, color.convertSRGBToLinear());
-
-                instancedBlossom.castShadow = true;
-                instancedStem.castShadow = true;
-                instancedBlossom.receiveShadow = true;
-                scene.add( instancedBlossom );
-                instancedBlossom.translateY(y_offset)
-                scene.add( instancedStem );
-                instancedStem.translateY(y_offset)
-
-    }
-});
-});
-
-*/
-
-/*
-gltfLoader.load(
-    '/models/treeline.glb', 
-    function(gltf){
-        var surface = gltf.scene.children[0];
-        var sampler = new MeshSurfaceSampler(surface).build();
-        
-        const tempPosition = new THREE.Vector3();
-        const tempObject = new THREE.Object3D();
-
-gltfLoader.load(
-    '/models/tree.glb', 
-    function(gltf){
-
-    var tree = gltf.scene.getObjectByName( 'tree');
-    let treeMaterial = new THREE.MeshLambertMaterial();
-    const color = new THREE.Color();
-    const treePalette = [ 0x320DAA, 0x411BC7, 0x5028E3 ];
-
-        for ( let i = 0; i < 80; i ++ ) {
-                sampler.sample(tempPosition);
-                tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
-                tempObject.rotation.x = Math.PI/2;
-                tempObject.rotation.z = Math.random() * Math.PI;
-                tempObject.scale.setScalar(Math.random() * .05 + .04);
-                tempObject.updateMatrix();
-
-                color.setHex( treePalette[ Math.floor( Math.random() * treePalette.length ) ] );
-
-                
-                var instancedTree = new THREE.InstancedMesh( tree.geometry, treeMaterial, 1 );
-                instancedTree.setMatrixAt(0, tempObject.matrix);
-                instancedTree.setColorAt(0, color.convertSRGBToLinear());
-
-                instancedTree.castShadow = true;
-                instancedTree.receiveShadow = true;
-                scene.add( instancedTree );
-                instancedTree.translateY(y_offset)
-
-    }
-});
-});
-*/
-
-var car;
+var car; //scooter
 gltfLoader.load(
     loc+'/models/scooter.glb', function(gltf){
         car = gltf.scene;
@@ -208,48 +115,83 @@ gltfLoader.load(
         car.translateY(y_offset)
 });
 
-var mug;
+//load cow due to state
 gltfLoader.load(
-    loc+'/models/mug.glb', function(gltf){
-        mug = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        //scene.add(mug);
-        mug.scale.set(1,1,1);
-        mug.position.set(-6.5,0,-8);
-        mug.translateY(y_offset)
-});
-
-var mixer3;
-var action3;
-gltfLoader.load(
-    loc+'/models/joshua.glb', function(gltf){
-        var joshua = gltf.scene;
-
-        //Playing Animation
-        mixer3 = new THREE.AnimationMixer( joshua );
-        action3 = mixer3.clipAction( gltf.animations[ 0 ] );
-        action3.timeScale = 1;
-        action3.play();
+   loc+'/models/state.glb', 
+    function(gltf){
+        for(var statename in StateCowInfo){
+            console.log("statename: " + statename + " ,value: " + StateCowInfo[statename]);
+            var stateCowInfo=StateCowInfo[statename]
+            console.log("a:" + stateCowInfo["a"]);
+            console.log("b:" + stateCowInfo["b"]);
+            placeCowInLine(statename,stateCowInfo["a"],stateCowInfo["b"])           
+        }
         
+        function placeCowInLine(statename,atype,btype){
+            var surface=gltf.scene.getObjectByName(statename);
+            var sampler = new MeshSurfaceSampler(surface).build();
+            /* Sample the coordinates */
+            const tempPosition = new THREE.Vector3();
+            const tempObject = new THREE.Object3D();
+            scene.add( surface);
+            surface.translateY(y_offset)
 
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
+            gltfLoader.load(
+            loc+'/models/new_cow.glb', 
+            function(gltf){
+            var tree = gltf.scene.getObjectByName( 'cow');
+            let treeMaterial = new THREE.MeshLambertMaterial();
+            const color = new THREE.Color();
+            const cowPalette = [ 0xF9D7B4, 0xC5A073,0x754029,0xBE6C39,0xF78656];
+
+            //type A
+            for ( let i = 0; i < atype; i ++ ) {
+                sampler.sample(tempPosition);
+                tempObject.position.set(tempPosition.x, tempPosition.y+0.426, tempPosition.z);
+                tempObject.rotation.y = Math.random() * Math.PI;
+                tempObject.scale.setScalar(.4);
+                tempObject.updateMatrix();
+
+                color.setHex( cowPalette[ Math.floor( Math.random() * cowPalette.length ) ] );
+
+                var instancedTree = new THREE.InstancedMesh( tree.geometry, treeMaterial, 1 );
+                instancedTree.setMatrixAt(0, tempObject.matrix);
+                instancedTree.setColorAt(0, color.convertSRGBToLinear());
+
+                instancedTree.castShadow = true;
+                instancedTree.receiveShadow = true;
+                scene.add( instancedTree );
+                instancedTree.translateY(y_offset)
             }
-        } );
-        //scene.add(joshua);
-        joshua.scale.set(1,1,1);
-        joshua.position.set(-3.5,0,10);
-        joshua.rotation.y = 0;
-        joshua.translateY(y_offset)
-});
 
+            //Type B
+            for ( let i = 0; i < btype; i ++ ) {
+            sampler.sample(tempPosition);
+            tempObject.position.set(tempPosition.x, tempPosition.y+0.266, tempPosition.z);
+            tempObject.rotation.y = Math.random() * Math.PI;
+            tempObject.scale.setScalar(.25);
+            tempObject.updateMatrix();
+
+            //color.setHex( Palette[1] ); //set color of B type
+            color.setHex( cowPalette[ Math.floor( Math.random() * cowPalette.length ) ] );
+
+            var instancedTree = new THREE.InstancedMesh( tree.geometry, treeMaterial, 1 );
+            instancedTree.setMatrixAt(0, tempObject.matrix);
+            instancedTree.setColorAt(0, color.convertSRGBToLinear());
+
+            instancedTree.castShadow = true;
+            instancedTree.receiveShadow = true;
+            scene.add( instancedTree );
+            instancedTree.translateY(y_offset)
+            }
+            }
+            );
+        }
+    }
+);
+
+
+//load worker
 const shirtColor = new THREE.Color();
 const shirtPalette = [ 0xFA6D6D, 0xffffff ];
 const skinPalette = [ 0x8d5524, 0xc68642, 0xe0ac69, 0xf1c27d, 0xffdbac ];
@@ -280,44 +222,23 @@ for ( let i = 0; i < 8; i ++ ) {
                 node.material.color.set( shirtColor ).convertSRGBToLinear();
             }
         } );
-        //scene.add(man);
+        scene.add(man);
         man.translateY(y_offset)
     });
     }
-    
 
-var clapper;
-var mixer;
-var action;
-gltfLoader.load(
-    loc+'/models/clapper.glb', function(gltf){
-        clapper = gltf.scene;
-        clapper.scale.set(1.4, 1.4, 1.4);
-        clapper.position.set(9.5, 0, -1);
-        clapper.rotation.y = Math.PI/8;
 
-        //Playing Animation
-        mixer = new THREE.AnimationMixer( clapper );
-        action = mixer.clipAction( gltf.animations[ 0 ] );
-        action.play();
-        
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        //scene.add(clapper);
-        clapper.translateY(y_offset)
-});
-
+//load walkingman==cyclist
 var cyclist;
 var mixer2;
 var action2;
 gltfLoader.load(
-    loc+'/models/cyclist.glb', function(gltf){
+    loc+'/models/black-x.glb', 
+    '/models/cyclist.glb', 
+    function(gltf){
         cyclist = gltf.scene;
         cyclist.scale.set(.33,.33,.33);
+        //cyclist.rotation.y = Math.PI/4;
 
         //Playing Animation
         mixer2 = new THREE.AnimationMixer( cyclist );
@@ -333,57 +254,6 @@ gltfLoader.load(
         } );
         scene.add(cyclist);
         cyclist.translateY(y_offset)
-});
-
-var mixer4;
-var action4;
-gltfLoader.load(
-    loc+'/models/stag.glb', function(gltf){
-        var stag = gltf.scene;
-
-        stag.scale.set(.2,.2,.2);
-        stag.rotation.y = Math.PI/2;
-        stag.position.set(6,0,-7);
-
-        mixer4 = new THREE.AnimationMixer( stag );
-        action4 = mixer4.clipAction( gltf.animations[ 0 ] );
-        action4.timeScale = 1;
-        action4.play();
-
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-        //scene.add(stag);
-        stag.translateY(y_offset)
-});
-
-
-var robot;
-var mixer5;
-var action5;
-gltfLoader.load(
-    loc+'/models/robo.glb', function(gltf){
-        robot = gltf.scene;
-        gltf.scene.traverse( function( node ) {
-            if ( node.isMesh ) { 
-                node.castShadow = true;
-                node.receiveShadow = true;
-            }
-        } );
-
-        mixer5 = new THREE.AnimationMixer( robot );
-        action5 = mixer5.clipAction( gltf.animations[ 14 ] );
-        action5.play();
-
-        robot.scale.set(.5,.5,.5);
-        robot.position.set(0,0,-9.5);
-        robot.rotation.y = -Math.PI;
-
-        //scene.add(robot);
-        robot.translateY(y_offset)
 });
 
 // Camera
@@ -565,7 +435,6 @@ let scrollSpeed = (function(){
 let azimuthalAngle;
 let cyclePos = 0;
 let i = 0;
-let g = 0.8;
 
 const popups = document.getElementsByClassName("popup");
 const popupstate = document.getElementsByClassName("popupstate");
@@ -634,16 +503,7 @@ const tick = () =>
 
     // Animation Mixer
     const delta = clock.getDelta();
-    if ( mixer ) mixer.update( delta );
     if ( mixer2 ) mixer2.update( delta );
-    if ( mixer3 ) mixer3.update( delta );
-    if ( mixer4 ) mixer4.update( delta );
-    if ( mixer5 ) mixer5.update( delta );
-
-    if (mug) {
-        mug.rotation.y -= 0.01;
-    }
-
 
     scrollSpeed();
 
