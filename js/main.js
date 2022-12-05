@@ -86,7 +86,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 var island;
 gltfLoader.load( 
-    '/models/island.glb',
+    loc+'/models/island.glb',
     function(gltf){
         island = gltf.scene;
        gltf.scene.traverse( function( node ) {
