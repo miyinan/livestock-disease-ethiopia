@@ -198,7 +198,7 @@ const skinPalette = [ 0x8d5524, 0xc68642, 0xe0ac69, 0xf1c27d, 0xffdbac ];
 
 for ( let i = 0; i < 8; i ++ ) {
     gltfLoader.load(
-        '/models/112.glb',
+        loc+'/models/man.glb',
         function(gltf){
         var man = gltf.scene;
         man.scale.set(.49,.49,.49);
