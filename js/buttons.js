@@ -40,6 +40,6 @@ function hideLegend() {
   document.getElementById("overlay").style.display="none";
 }
 
-function fowardTtoArchieve(){
-   window.location="Archieve.html";
+function fowardTtoAbout(){
+   window.location="about.html";
 }

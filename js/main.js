@@ -86,7 +86,7 @@ gltfLoader.setDRACOLoader(dracoLoader);
 
 var island;
 gltfLoader.load( 
-   loc+'/models/juse2.glb', 
+    '/models/island.glb',
     function(gltf){
         island = gltf.scene;
        gltf.scene.traverse( function( node ) {
@@ -133,7 +133,7 @@ gltfLoader.load(
             /* Sample the coordinates */
             const tempPosition = new THREE.Vector3();
             const tempObject = new THREE.Object3D();
-            scene.add( surface);
+            //scene.add( surface);
             surface.translateY(y_offset)
 
             gltfLoader.load(
@@ -198,7 +198,8 @@ const skinPalette = [ 0x8d5524, 0xc68642, 0xe0ac69, 0xf1c27d, 0xffdbac ];
 
 for ( let i = 0; i < 8; i ++ ) {
     gltfLoader.load(
-        loc+'/models/man.glb', function(gltf){
+        '/models/112.glb',
+        function(gltf){
         var man = gltf.scene;
         man.scale.set(.49,.49,.49);
         man.position.set(-8.5+ Math.random()*2-1, -0.01, 4.5 + Math.random()*2-1);
