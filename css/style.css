@@ -475,15 +475,15 @@ input:checked ~ #sun {
     .state {
         position: fixed;
         z-index: 888;
-        bottom: 10px;
+        bottom: 30px;
         right: 20px;
-        width: 30%;
-        height:15%;
+        width: 20px;
+        height:25px;
     }
 
     .nextbutton{
         text-align: center;
-        width: 100%;
+        width: 50%;
         float:right;
     }
 
