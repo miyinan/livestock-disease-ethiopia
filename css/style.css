@@ -477,12 +477,13 @@ input:checked ~ #sun {
         z-index: 888;
         bottom: 10px;
         right: 20px;
-        width: 30%
+        width: 30%;
+        height:15%;
     }
 
     .nextbutton{
         text-align: center;
-        width: 1000%;
+        width: 100%;
         float:right;
     }
 
