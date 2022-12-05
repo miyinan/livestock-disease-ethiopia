@@ -386,6 +386,14 @@ input:checked ~ #sun {
     z-index:9999;
 }
 
+.model_legend{
+
+    position: absolute;
+    left:50%;
+    bottom:0%;
+    transform:translate(-50%,0%);
+}
+
 .popgraph {
     display: none;
   }
