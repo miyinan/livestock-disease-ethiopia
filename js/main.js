@@ -115,6 +115,134 @@ gltfLoader.load(
         car.translateY(y_offset)
 });
 
+//load grass
+gltfLoader.load(
+    loc+'/models/to-grow.glb', 
+    function(gltf){
+        var surface = gltf.scene.children[0];
+        var sampler = new MeshSurfaceSampler(surface).build();
+        /* Sample the coordinates */
+        const tempPosition = new THREE.Vector3();
+        const tempObject = new THREE.Object3D();
+        //scene.add( surface);
+        //surface.translateY(y_offset)
+
+
+gltfLoader.load(
+    loc+'/models/grass_new.glb', 
+    function(gltf){
+    var grass = gltf.scene.getObjectByName( 'grass');
+    let grassMaterial = new THREE.MeshLambertMaterial();
+    const color = new THREE.Color();
+    const grassPalette = [ 0x41993A, 0x4DA83C, 0x95E793, 0x56E74A,0x96C779];
+    scene.add(grass)
+    grass.translateY(y_offset)
+
+        for ( let i = 0; i < 300; i ++ ) {
+                sampler.sample(tempPosition);
+                tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
+                tempObject.rotation.y = Math.random() * Math.PI;
+                tempObject.scale.setScalar(Math.random() * .002 + .001);
+                
+                tempObject.updateMatrix();
+
+                color.setHex( grassPalette[ Math.floor( Math.random() * grassPalette.length ) ] );
+
+                
+                var instancedGrass = new THREE.InstancedMesh( grass.geometry, grassMaterial, 1 );
+                instancedGrass.setMatrixAt(0, tempObject.matrix);
+                instancedGrass.setColorAt(0, color.convertSRGBToLinear());
+
+                instancedGrass.castShadow = true;
+                instancedGrass.receiveShadow = true;
+                scene.add( instancedGrass);
+                instancedGrass.translateY(y_offset+0.08)
+    }
+});
+});
+
+
+//load stone
+gltfLoader.load(
+    loc+'/models/for-stone.glb', 
+    function(gltf){
+        var surface = gltf.scene.children[0];
+        var sampler = new MeshSurfaceSampler(surface).build();
+        /* Sample the coordinates */
+        const tempPosition = new THREE.Vector3();
+        const tempObject = new THREE.Object3D();
+        scene.add( surface);
+        surface.translateY(y_offset)
+
+
+gltfLoader.load(
+    loc+'/models/stone1.glb', 
+    function(gltf){
+    var grass = gltf.scene.getObjectByName( 'stone1');
+    let grassMaterial = new THREE.MeshLambertMaterial();
+    const color = new THREE.Color();
+    const grassPalette = [ 0xBEBEBD,0xAAA9A7, 0x908F8B];
+    scene.add(grass)
+    grass.translateY(y_offset)
+
+        for ( let i = 0; i < 20; i ++ ) {
+                sampler.sample(tempPosition);
+                tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
+                tempObject.rotation.y = Math.random() * Math.PI;
+                tempObject.scale.setScalar(Math.random() * .0005 + .001);
+                
+                tempObject.updateMatrix();
+
+                color.setHex( grassPalette[ Math.floor( Math.random() * grassPalette.length ) ] );
+
+                
+                var instancedGrass = new THREE.InstancedMesh( grass.geometry, grassMaterial, 1 );
+                instancedGrass.setMatrixAt(0, tempObject.matrix);
+                instancedGrass.setColorAt(0, color.convertSRGBToLinear());
+
+                instancedGrass.castShadow = true;
+                instancedGrass.receiveShadow = true;
+                scene.add( instancedGrass);
+                instancedGrass.translateY(y_offset)
+    }
+});
+
+gltfLoader.load(
+    loc+'/models/stone2.glb', 
+    function(gltf){
+    var grass = gltf.scene.getObjectByName( 'stone2');
+    let grassMaterial = new THREE.MeshLambertMaterial();
+    const color = new THREE.Color();
+    const grassPalette = [ 0xBEBEBD,0xAAA9A7, 0x908F8B];
+    scene.add(grass)
+    grass.translateY(y_offset)
+
+        for ( let i = 0; i < 10; i ++ ) {
+                sampler.sample(tempPosition);
+                tempObject.position.set(tempPosition.x, tempPosition.y, tempPosition.z);
+                tempObject.rotation.y = Math.random() * Math.PI;
+                tempObject.scale.setScalar(Math.random() * .0005 + .001);
+                
+                tempObject.updateMatrix();
+
+                color.setHex( grassPalette[ Math.floor( Math.random() * grassPalette.length ) ] );
+
+                
+                var instancedGrass = new THREE.InstancedMesh( grass.geometry, grassMaterial, 1 );
+                instancedGrass.setMatrixAt(0, tempObject.matrix);
+                instancedGrass.setColorAt(0, color.convertSRGBToLinear());
+
+                instancedGrass.castShadow = true;
+                instancedGrass.receiveShadow = true;
+                scene.add( instancedGrass);
+                instancedGrass.translateY(y_offset)
+    }
+});
+
+});
+
+
+
 //load cow due to state
 gltfLoader.load(
    loc+'/models/state.glb', 
@@ -137,9 +265,11 @@ gltfLoader.load(
             surface.translateY(y_offset)
 
             gltfLoader.load(
+               // '/models/grass-1.glb', 
             loc+'/models/new_cow.glb', 
             function(gltf){
             var tree = gltf.scene.getObjectByName( 'cow');
+            //var tree = gltf.scene.getObjectByName( 'grass-1');
             let treeMaterial = new THREE.MeshLambertMaterial();
             const color = new THREE.Color();
             const cowPalette = [ 0xF9D7B4, 0xC5A073,0x754029,0xBE6C39,0xF78656];
@@ -189,6 +319,10 @@ gltfLoader.load(
         }
     }
 );
+
+
+
+
 
 
 //load worker
